@@ -3,7 +3,7 @@
 ![PiCam1](https://user-images.githubusercontent.com/65100243/101294201-d4aacf80-37e3-11eb-9805-23a3fd5255e6.PNG)  ![PiCam2](https://user-images.githubusercontent.com/65100243/101294204-dbd1dd80-37e3-11eb-8cb5-407de8235c46.PNG)
 
 ## Overview
-Welcome to my Raspberry Pi face-following project. It consists of a Pi Zero W that reads frames from the camera module, performs face detection using a Haar cascade classifier, then actuates the two servo motors to pan and tilt the camera toward the detected face. The "i2c_servo.py" file is a custom module that contains a class which inherits from a parent class in Adafruit's ServoKit library. The main purpose of this custom module is to keep all the bus, board, and servo settings separate from the main file for a little bit of cleanliness. The "CamCtrl.py" file contains the main code.
+Welcome to my Raspberry Pi face-following project! It consists of a Pi Zero W that reads frames from the camera module, performs face detection using a Haar cascade classifier, then actuates the two servo motors to pan and tilt the camera toward the detected face. The "i2c_servo.py" file is a custom module that contains a class which inherits from a parent class in Adafruit's ServoKit library. The main purpose of this custom module is to keep all the bus, board, and servo settings separate from the main file for a little bit of cleanliness. The "CamCtrl.py" file contains the main code.
 
 ## Hardware
 - Raspberry Pi Zero WH
@@ -14,6 +14,8 @@ Welcome to my Raspberry Pi face-following project. It consists of a Pi Zero W th
 - 3D printed chassis (modeled in Solidworks and printed in PLA on an Ender 3 Pro)
 
 ## Software
+The program uses the machine vision library, OpenCV, to process images in the form of arrays and detect faces in the stream of such images. The face detection is executed via a Haar cascade classifier, which is trained using the "haarcascade_frontalface_default.xml" profile.
+
 I didn't have a spare monitor or an HDMI switch so this was all done headless in the Nano editor, through SSH. Viewing the camera's output through SSH was tricky; but was solved with X11-forwarding, ie. exporting the Pi's graphic output to an X-server on my PC (using VcXsrv).  
 
 The following command forwards the Pi's display to my PC: `export DISPLAY=192.168.1.26:0.0`
